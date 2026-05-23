@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --google-blue: #1a73e8;
+  --google-blue-hover: #1557b0;
+  --google-blue-light: #e8f0fe;
+  --google-red: #ea4335;
+  --google-green: #34a853;
+  --google-yellow: #fbbc04;
+  --google-gray: #5f6368;
+  --google-gray-light: #f1f3f4;
+  --google-gray-border: #dadce0;
+  --font-google: 'Google Sans', 'Roboto', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-google);
+  background: #f8f9fa;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #dadce0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bdc1c6;
+}
+
+/* Progress bar animation */
+@keyframes progress-stripe {
+  from { background-position: 40px 0; }
+  to { background-position: 0 0; }
+}
+
+.progress-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 40px 40px;
+  animation: progress-stripe 1s linear infinite;
+}
+
+/* Drag overlay */
+.drag-active {
+  border-color: var(--google-blue) !important;
+  background: var(--google-blue-light) !important;
+}
+
+/* File card hover */
+.file-card {
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+.file-card:hover {
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
+  transform: translateY(-1px);
+}
+
+/* Upload zone ripple */
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(26, 115, 232, 0.15);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
